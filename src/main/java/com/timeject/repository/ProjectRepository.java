@@ -10,9 +10,7 @@ import com.timeject.model.Project;
 @Repository
 public interface ProjectRepository extends CrudRepository<Project,Long>{
 	
-	Project findByName(String name);
-	
-	Optional<Project> findByOptionalName(String name);
+	Optional<Project> findByName(String name);
 
 	void delete(Optional<Project> projectOptional);
 
