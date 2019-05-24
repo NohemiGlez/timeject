@@ -35,4 +35,21 @@ public class ProjectController {
 		return projectOptional.get();
 	}
 	
+	@PutMapping(value = "/{projectName}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Project updateProject(@RequestBody Project project) {
+		
+		Optional<Project> projectOptional = projectRepository.findById(project.getId());
+		projectRepository.save(projectOptional);
+		if (!projectOptional.isPresent())
+			throw new HttpServerErrorException(HttpStatus.INTERNAL_SERVER_ERROR,"unable to update project");
+		return projectOptional.get();
+	} 
+	
+	@DeleteMapping(value = "/{projectName}")
+	public void deleteProject(@PathVariable final String projectName) {
+		Optional<Project> projectOptional = projectRepository.findByOptionalName(projectName);
+		projectRepository.delete(projectOptional);
+		if (!projectOptional.isPresent())
+			throw new HttpServerErrorException(HttpStatus.INTERNAL_SERVER_ERROR,"unable to delete project");
+	}
 }
