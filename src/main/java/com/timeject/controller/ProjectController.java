@@ -2,7 +2,6 @@ package com.timeject.controller;
 
 import com.timeject.model.Project;
 import com.timeject.repository.ProjectRepository;
-import javassist.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
