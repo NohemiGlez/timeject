@@ -11,12 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.timeject.exception.NotFoundException;
-import com.timeject.model.Project;
-import com.timeject.service.ProjectService;
+import com.timeject.model.ProjectType;
 import com.timeject.service.ProjectTypeService;
 
 @Controller
-@RequestMapping(value = "/type")
+@RequestMapping(value = "/types")
 public class ProjectTypeController {
 
 	private final ProjectTypeService projectTypeService;
@@ -27,13 +26,9 @@ public class ProjectTypeController {
     }
 
 	@GetMapping("/view")
-	public String view(@PathVariable Long id, Model model) throws NotFoundException {
-		Optional<Project> projectOptional = projectTypeService.findById(id);
-		if (!projectOptional.isPresent()) {
-			throw new NotFoundException("project searched couldn't be located");
-		}
-		model.addAttribute("project", projectTypeService.findById(id));
-		return "project/view";
+	public Model view(@PathVariable Long id, Model model) throws NotFoundException {
+		Iterable<ProjectType> projectTypeOptional = projectTypeService.findAll();
+		return model.addAttribute("project", projectTypeOptional);
 	}
 
 }

@@ -1,8 +1,8 @@
 $.ajax({
 	type : "GET",
-	url : urlPath,
+	url : "/types/view",
 	success : function(data) {
-		helpers.buildDropdown(jQuery.parseJSON(data), $('#dropdown'),
-				'Select an option');
+		helpers.buildDropdown(jQuery.parseJSON(data),
+				$('#project-type-select'), 'Select an option');
 	}
 });
