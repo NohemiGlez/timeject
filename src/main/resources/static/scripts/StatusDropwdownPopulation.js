@@ -1,19 +1,15 @@
-$(document).ready(
-		function loadProjectTypesDrowdown() {
+$(document).ready(function loadProjectTypesDrowdown() {
 
-			var select = $("#project-type-select");
-			select.find('option').remove();
+	var select = $("#project-type-select");
+	select.find('option').remove();
 
-			$.ajax({
-				url : "/types/view",
-				type : "GET"
-			}).done(
-					function(data) {
-						window.currentSteps = data;
-						$.each(data, function() {
-							select.append($("<option />").val(this.step).text(
-									"Step " + this.step));
-						})
-					});
-		}
-);
+	$.ajax({
+		url : "/timeject/types",
+		type : "GET"
+	}).done(function(data) {
+		window.currentType = data;
+		$.each(data, function() {
+			select.append($("<option />").val(this.type).text(this.type));
+		})
+	});
+});
