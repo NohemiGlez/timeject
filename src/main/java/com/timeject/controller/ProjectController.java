@@ -31,4 +31,9 @@ public class ProjectController {
         this.projectService= projectService;
     }
 
+    @GetMapping("/{id}")
+    public String viewProject(@PathVariable Long id){
+		return "project"
+	}
+
 }
