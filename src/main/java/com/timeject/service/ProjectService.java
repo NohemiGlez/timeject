@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface ProjectService {
     void update(Project project) throws NotFoundException;
-    Optional<Project> findById(Long id);
+    Project findById(Long id) throws NotFoundException;
     Optional<Project> findByName(String name);
     Iterable<Project> findAll();
     void deleteById(Long id);

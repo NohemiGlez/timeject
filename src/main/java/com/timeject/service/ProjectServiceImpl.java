@@ -14,18 +14,18 @@ public class ProjectServiceImpl implements ProjectService {
     private ProjectRepository projectRepository;
 
     @Override
-    public Optional<Project> findById(Long id) {
-        return Optional.empty();
+    public Project findById(Long id) throws NotFoundException{
+        return projectRepository.findById(id).orElseThrow(()->new NotFoundException("Project not found"));
     }
 
     @Override
     public Optional<Project> findByName(String name) {
-        return Optional.empty();
+        return projectRepository.findByName(name);
     }
 
     @Override
     public void deleteById(Long id) {
-
+        projectRepository.deleteById(id);
     }
 
     @Inject

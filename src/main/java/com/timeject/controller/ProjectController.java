@@ -35,10 +35,6 @@ public class ProjectController {
 
     @GetMapping("/view")
     public String view(@PathVariable Long id, Model model) throws NotFoundException {
-		Optional<Project> projectOptional = projectService.findById(id);
-		if(!projectOptional.isPresent()){
-			throw new NotFoundException("project searched couldn't be located");
-		}
 		model.addAttribute("project",projectService.findById(id));
 		return "project/view";
 	}
@@ -52,7 +48,6 @@ public class ProjectController {
 	public void delete(@PathVariable Long id){
 
 	}
-
 
 
 }

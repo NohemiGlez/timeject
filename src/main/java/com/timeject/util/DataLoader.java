@@ -44,8 +44,8 @@ public class DataLoader implements ApplicationRunner {
 	private void saveProjects() {
 		for (int i = 0; i < 10; i++) {
 			Project project = new Project();
-			project.setDescription("my description no" + i);
-			project.setName("Project No. " + i);
+			project.setDescription("My project demo description no " + i);
+			project.setName("Project Demo No. " + i);
 			project.setStatus(getStatus());
 			project.setType(getType(PROJECT_TYPES[i % 3]));
 			project.setTask(getTasks());
@@ -72,7 +72,7 @@ public class DataLoader implements ApplicationRunner {
 		Collection<Task> tasks = new ArrayList<>();
 		for (int i = 0; i < 10; i++) {
 			Task task = new Task();
-			task.setDescription("task no " + i);
+			task.setDescription("My Demo Task no " + i);
 			task.setStartDate(new Timestamp(Calendar.getInstance().getTimeInMillis()));
 
 		}
