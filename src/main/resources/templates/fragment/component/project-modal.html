@@ -1,0 +1,46 @@
+<div class="modal fade" id="add-project" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Add project</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label for="project-name">Name</label> <input type="text"
+							class="form-control" id="project-name"
+							placeholder="My magic project">
+					</div>
+					<div class="form-group">
+						<label for="project-description">Description</label> <input
+							type="text" class="form-control" id="project-description"
+							placeholder="This projects makes all your dreams true">
+					</div>
+					<label for="project-type">Type</label> <select
+						class="custom-select" id="project-type">
+						<option selected>Choose...</option>
+						<option value="1">One</option>
+						<option value="2">Two</option>
+						<option value="3">Three</option>
+					</select> <label for="project-status">Status</label> <select
+						class="custom-select" id="project-status">
+						<option selected>Choose...</option>
+						<option value="1">One</option>
+						<option value="2">Two</option>
+						<option value="3">Three</option>
+					</select>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save
+							changes</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
