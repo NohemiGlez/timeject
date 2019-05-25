@@ -14,10 +14,14 @@ public class IndexController {
 	public IndexController(ProjectService projectService){
 		this.projectService = projectService;
 	}
-	@GetMapping(value = "",produces = {MediaType.APPLICATION_JSON_VALUE})
+	@GetMapping(value = "")
 	public String home(Model model){
 		model.addAttribute("projects",projectService.findAll());
 		return "index";
+	}
+	@GetMapping(value = "/thanos")
+	public String thanos(){
+		return "thanos";
 	}
 
 }

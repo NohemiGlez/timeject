@@ -28,7 +28,7 @@
               </div>
  </div>
  <footer>
-         <p layout:fragment="footer">Custom footer here</p>
+         <p layout:fragment="footer" th:text="${'timeject &copy;'+#dates.year(#dates.createNow())}">timeject &copy;</p>
  </footer>
 </body>
 </html>
