@@ -1,15 +1,22 @@
 <html layout:decorate="~{layout/main.html}">
 <head>
-  <title>Content page</title>
-  <script src="content-script.js"></script>
+<title>Content page</title>
+<!--   <script src="content-script.js"></script> -->
+<script src="scripts/StatusDropwdownPopulation.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	crossorigin="anonymous"></script>
 </head>
 <body>
-  <div layout:fragment="nav-bar"><th:block th:replace="fragment/component/nav-bar"></th:block></div>
-  <section layout:fragment="content">
-    <p>This is a paragraph from the content page</p>
-  </section>
-  <footer>
-    <p layout:fragment="custom-footer">This is some footer content from the content page</p>
-  </footer>
+	<div layout:fragment="nav-bar">
+		<th:block th:replace="fragment/component/nav-bar"></th:block>
+	</div>
+	<section layout:fragment="content">
+		<p>This is a paragraph from the content page</p>
+	</section>
+	<footer>
+		<p layout:fragment="custom-footer">This is some footer content
+			from the content page</p>
+	</footer>
 </body>
 </html>
