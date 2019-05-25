@@ -2,7 +2,7 @@
   <div layout:fragment="project-content">
        <div th:each="task :${project.task}">
             <div>
-                    <span th:text="${task.name}"></span>
+                    <span th:text="${task.title}"></span>
                     <span th:text="${task.description}"></span>
             </div>
         </div>

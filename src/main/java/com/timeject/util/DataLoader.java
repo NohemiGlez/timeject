@@ -72,11 +72,15 @@ public class DataLoader implements ApplicationRunner {
 		Collection<Task> tasks = new ArrayList<>();
 		for (int i = 0; i < 10; i++) {
 			Task task = new Task();
+			task.setTitle("My Task Demo Title "+i);
 			task.setDescription("My Demo Task no " + i);
 			task.setStartDate(new Timestamp(Calendar.getInstance().getTimeInMillis()));
-
+			Calendar calendar = Calendar.getInstance();
+			calendar.add(Calendar.MONTH, 1);
+			task.setDueDate(new Timestamp(Calendar.getInstance().getTimeInMillis()));
+			task.setStatus(Task.Status.TODO.name());
+			tasks.add(task);
 		}
-		taskRepository.saveAll(tasks);
 		return tasks;
 	}
 

@@ -28,7 +28,7 @@ public class Project {
     @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @MapsId
     private ProjectType type;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name= "project_id")
     private Collection<Task> task;
 
