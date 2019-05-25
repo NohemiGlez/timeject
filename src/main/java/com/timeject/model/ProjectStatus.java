@@ -2,16 +2,12 @@ package com.timeject.model;
 
 import java.sql.Timestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
 
 @Entity
 @Table(name = "projects_status")
@@ -27,5 +23,8 @@ public class ProjectStatus {
 	private Timestamp start;
 	@Column(name = "project_status_end", nullable = false)
     private Timestamp end;
+	@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="project_id")
+	private Project project;
     private  Float percentageCompleted;
 }

@@ -22,9 +22,7 @@ public class Project {
     private String name;
     @Column(name = "project_description", nullable = false)
     private String description;
-    @JoinColumn(name = "project_status_id", nullable = true)
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @MapsId
+    @OneToOne(mappedBy = "project",cascade=CascadeType.ALL)
     private ProjectStatus status;
     @JoinColumn(name = "project_type_id", nullable = true)
     @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)

@@ -30,18 +30,11 @@ import com.timeject.repository.TaskRepository;
 public class DataLoader implements ApplicationRunner {
 	private ProjectRepository projectRepository;
 	private TaskRepository taskRepository;
-	private ProjectStatusRepository projectStatusRepository;
 	private static final String[] PROJECT_TYPES = { "A", "B", "C" };
-	EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("UnidadPersonas");
-	EntityManager ementityManager = entityManagerFactory.createEntityManager();
-
 	@Inject
-	@Lazy
-	public DataLoader(ProjectRepository projectRepository, TaskRepository taskRepository,
-			ProjectStatusRepository projectStatusRepository) {
+	public DataLoader(ProjectRepository projectRepository, TaskRepository taskRepository) {
 		this.projectRepository = projectRepository;
 		this.taskRepository = taskRepository;
-		this.projectStatusRepository = projectStatusRepository;
 	}
 
 	public void run(ApplicationArguments args) {
@@ -56,7 +49,6 @@ public class DataLoader implements ApplicationRunner {
 			project.setStatus(getStatus());
 			project.setType(getType(PROJECT_TYPES[i % 3]));
 			project.setTask(getTasks());
-			ementityManager.persist(project);
 			projectRepository.save(project);
 		}
 	}
@@ -73,8 +65,6 @@ public class DataLoader implements ApplicationRunner {
 		status.setStart(new Timestamp(Calendar.getInstance().getTimeInMillis()));
 		calendar.add(Calendar.MONTH, 1);
 		status.setEnd(new Timestamp(calendar.getTimeInMillis()));
-		ementityManager.persist(status);
-		projectStatusRepository.save(status);
 		return status;
 	}
 
@@ -86,16 +76,8 @@ public class DataLoader implements ApplicationRunner {
 			task.setStartDate(new Timestamp(Calendar.getInstance().getTimeInMillis()));
 
 		}
-		ementityManager.persist(tasks);
 		taskRepository.saveAll(tasks);
 		return tasks;
-	}
-	
-	@Bean
-	@PersistenceContext(unitName = "DataLoader")  
-	public LocalEntityManagerFactoryBean entityManagerFactory() {
-		LocalEntityManagerFactoryBean factoryBean = new LocalEntityManagerFactoryBean();
-		return factoryBean;
 	}
 
 }
