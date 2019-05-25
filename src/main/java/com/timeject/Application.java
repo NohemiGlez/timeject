@@ -10,12 +10,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.context.event.EventListener;
 
 import javax.sql.DataSource;
 
 @SpringBootApplication
 public class Application {
-
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
@@ -24,15 +25,4 @@ public class Application {
 		return application.sources(Application.class);
 	}
 
-	@Configuration
-	@PropertySource({ "classpath:application.properties" })
-	public static class DatabaseConfig {
-
-		@Bean
-		@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
-		@ConfigurationProperties("spring.datasource")
-		public DataSource dataSource(DataSourceProperties properties) {
-			return properties.initializeDataSourceBuilder().build();
-		}
-	}
 }

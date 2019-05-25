@@ -27,6 +27,5 @@ public class ProjectStatus {
 	private Timestamp start;
 	@Column(name = "project_status_end", nullable = false)
     private Timestamp end;
-	@Column(name = "project_status_percentage_completed", nullable = false)
-    private Float percentageCompleted;
+    private  Float percentageCompleted;
 }

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <title layout:fragment="title">Layout page</title>
+  <th:block th:replace="fragment/bootstrap"></th:block>
+</head>
+<body>
+  <header>
+    <h1>My website</h1>
+  </header>
+  <div>
+    <div id="projects" th:insert="fragment/projects"></div>
+    <div id="content"layout:fragment="content"></div>
+  </div>
+  </div>
+  <footer>
+    <p>My footer</p>
+    <p layout:fragment="custom-footer">Custom footer here</p>
+  </footer>
+</body>
+</html>

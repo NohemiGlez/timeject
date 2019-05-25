@@ -1,20 +1,12 @@
 package com.timeject.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Collection;
 
 @Entity
 @Table(name = "projects")
@@ -31,15 +23,15 @@ public class Project {
     @Column(name = "project_description", nullable = false)
     private String description;
     @JoinColumn(name = "project_status_id", nullable = true)
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @MapsId
     private ProjectStatus status;
     @JoinColumn(name = "project_type_id", nullable = true)
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @MapsId
     private ProjectType type;
-    @ManyToOne
-    @JoinColumn(name= "task_id")
-    private Task task;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name= "project_id")
+    private Collection<Task> task;
 
 }

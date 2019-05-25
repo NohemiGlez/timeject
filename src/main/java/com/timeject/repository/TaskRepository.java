@@ -10,8 +10,4 @@ import com.timeject.model.Task;
 @Repository
 public interface TaskRepository extends CrudRepository<Task, Long>{
 
-	void save(Optional<Task> taskOptional);
-
-	void delete(Optional<Task> taskOptional);
-
 }

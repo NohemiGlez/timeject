@@ -31,5 +31,4 @@ public class Task {
     private Timestamp endDate;
 	@Column(name = "task_status", nullable = false)
     private String status;
-
 }
