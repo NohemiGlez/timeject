@@ -10,16 +10,16 @@ import com.timeject.repository.ProjectTypeRepository;
 @Service("projectTypeService")
 public class ProjectTypeImpl implements ProjectTypeService {
 
-	 private ProjectTypeRepository projectTypeRepository;
-	
+	private ProjectTypeRepository projectTypeRepository;
+
 	@Override
 	public Iterable<ProjectType> findAll() {
 		return projectTypeRepository.findAll();
 	}
 
-	 @Inject
-	    public ProjectTypeImpl(ProjectTypeRepository projectTypeRepository){
-	        this.projectTypeRepository = projectTypeRepository;
-	    }
-	
+	@Inject
+	public ProjectTypeImpl(ProjectTypeRepository projectTypeRepository) {
+		this.projectTypeRepository = projectTypeRepository;
+	}
+
 }
