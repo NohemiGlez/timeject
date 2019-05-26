@@ -3,7 +3,6 @@ package com.timeject.service;
 import com.timeject.exception.NotFoundException;
 import com.timeject.model.Project;
 import com.timeject.repository.ProjectRepository;
-import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -35,7 +34,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public Iterable<Project> findAll(){
-        return projectRepository.findAll();
+        return projectRepository.findAllByOrderByIdDesc();
     }
 
     @Override

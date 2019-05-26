@@ -1,6 +1,8 @@
 package com.timeject.controller;
 
 import com.timeject.model.Project;
+import com.timeject.model.ProjectStatus;
+import com.timeject.model.ProjectType;
 import com.timeject.service.ProjectService;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -17,11 +19,19 @@ public class IndexController {
 	@GetMapping(value = "")
 	public String home(Model model){
 		model.addAttribute("projects",projectService.findAll());
+		model.addAttribute("project",getEmptyProject());
 		return "index";
 	}
+
+	private Project getEmptyProject() {
+		Project project = new Project();
+		project.setType(new ProjectType());
+		project.setStatus(new ProjectStatus());
+		return project;
+	}
+
 	@GetMapping(value = "/thanos")
 	public String thanos(){
 		return "thanos";
 	}
-
 }

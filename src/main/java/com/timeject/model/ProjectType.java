@@ -17,6 +17,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class ProjectType {
+    public enum Type{
+      A,B,C
+    };
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "project_type_id")

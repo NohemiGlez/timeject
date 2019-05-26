@@ -15,9 +15,8 @@ import com.timeject.model.Project;
 import com.timeject.service.ProjectService;
 
 @Controller
-@RequestMapping(value = "/project/{id}")
+@RequestMapping(value = "/project")
 public class ProjectController {
-	
 	private final ProjectService projectService;
 	
 	@Inject
@@ -25,28 +24,27 @@ public class ProjectController {
         this.projectService= projectService;
     }
 
-    @GetMapping("/view")
+    @GetMapping("/{id}/view")
     public String view(@PathVariable Long id, Model model) throws NotFoundException {
 		model.addAttribute("projects",projectService.findAll());
 		model.addAttribute("project",projectService.findById(id));
 		return "project/view";
 	}
 
-	@GetMapping("{id}/edit")
+	@GetMapping("/{id}/edit")
 	public String edit(@PathVariable Long id){
 		return "project/edit";
 	}
 
-	@GetMapping("{id}/delete")
+	@GetMapping("/{id}/delete")
 	public void delete(@PathVariable Long id){
 
 	}
 
-	@PostMapping("/create")
-	public Project add( @ModelAttribute("project") Project project, Model model) {
+	@PostMapping("/")
+	public String add( @ModelAttribute("project") Project project, Model model) throws NotFoundException {
 		projectService.save(project);
-		return project;
+		return view(project.getId(),model);
 	}
-	
 
 }

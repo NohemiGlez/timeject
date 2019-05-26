@@ -1,36 +1,25 @@
 package com.timeject.util;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
-
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
-import org.springframework.stereotype.Component;
-
 import com.timeject.model.Project;
 import com.timeject.model.ProjectStatus;
 import com.timeject.model.ProjectType;
 import com.timeject.model.Task;
 import com.timeject.repository.ProjectRepository;
-import com.timeject.repository.ProjectStatusRepository;
 import com.timeject.repository.TaskRepository;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 
-@Component
+import javax.inject.Inject;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
+import static com.timeject.model.ProjectType.Type;
+//@Component
 public class DataLoader implements ApplicationRunner {
 	private ProjectRepository projectRepository;
 	private TaskRepository taskRepository;
-	private static final String[] PROJECT_TYPES = { "A", "B", "C" };
+	private static final String[] PROJECT_TYPES = {Type.A.name(), Type.B.name(), Type.C.name()};
 	@Inject
 	public DataLoader(ProjectRepository projectRepository, TaskRepository taskRepository) {
 		this.projectRepository = projectRepository;
