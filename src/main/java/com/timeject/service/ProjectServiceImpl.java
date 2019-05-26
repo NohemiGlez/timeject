@@ -1,16 +1,24 @@
 package com.timeject.service;
 
-import com.timeject.exception.NotFoundException;
-import com.timeject.model.Project;
-import com.timeject.repository.ProjectRepository;
-import org.springframework.stereotype.Service;
+import java.util.Optional;
 
 import javax.inject.Inject;
-import java.util.Optional;
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
+
+import com.timeject.exception.NotFoundException;
+import com.timeject.model.Project;
+import com.timeject.model.ProjectType;
+import com.timeject.repository.ProjectRepository;
+import com.timeject.repository.ProjectTypeRepository;
 
 @Service("projectService")
 public class ProjectServiceImpl implements ProjectService {
     private ProjectRepository projectRepository;
+    
+//    @Inject
+    private ProjectTypeRepository projectTypeRepository;
 
     @Override
     public Project findById(Long id) throws NotFoundException{
@@ -23,8 +31,11 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public void deleteById(Long id) {
-        projectRepository.deleteById(id);
+    @Transactional
+    public void deleteById(Project project) {
+    	Long projectTypeId = project.getType().getId();
+    	projectTypeRepository.deleteById(projectTypeId);
+        projectRepository.delete(project);
     }
 
     @Inject

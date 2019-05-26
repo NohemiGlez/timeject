@@ -7,5 +7,5 @@ import com.timeject.model.ProjectType;
 
 @Repository
 public interface ProjectTypeRepository extends CrudRepository<ProjectType, Long>{
-
+	
 }

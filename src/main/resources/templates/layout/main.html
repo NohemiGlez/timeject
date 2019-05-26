@@ -13,7 +13,9 @@
 </head>
 <body>
 	<header>
-		<div layout:fragment="nav-bar">nav bar</div>
+		<div layout:fragment="nav-bar">
+			<th:block th:replace="fragment/component/nav-bar"></th:block>
+		</div>
 	</header>
 	<div class="parent-container">
 

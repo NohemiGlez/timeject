@@ -4,7 +4,9 @@
      <div class="card-body">
        <h5 class="card-title" th:text="${project.name}"></h5>
        <p class="card-text" th:text="${project.description}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-       <a href="#" th:href="@{'/project/'+${project.id}+'/view'}" class="btn btn-primary">View Project</a>
+       <a href="#" th:href="@{'/project/'+${project.id}+'/view'}" class="btn btn-info">View</a>
+        <a href="#" th:href="@{'/project/'+${project.id}+'/edit'}" class="btn btn-secondary">Edit</a>
+         <a href="#" th:href="@{'/project/'+${project.id}+'/delete'}" class="btn btn-danger">Delete</a>
      </div>
    </div>
 </div>

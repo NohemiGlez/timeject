@@ -37,8 +37,10 @@ public class ProjectController {
 	}
 
 	@GetMapping("/{id}/delete")
-	public void delete(@PathVariable Long id){
-
+	public String delete(@PathVariable Long id) throws NotFoundException {
+		Project project = projectService.findById(id);
+		projectService.deleteById(project);
+		return "project/view";
 	}
 
 	@PostMapping("/")

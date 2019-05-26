@@ -10,7 +10,6 @@ public interface ProjectService {
     Project findById(Long id) throws NotFoundException;
     Optional<Project> findByName(String name);
     Iterable<Project> findAll();
-    void deleteById(Long id);
     void save(Project project);
-
+	void deleteById(Project project);
 }
