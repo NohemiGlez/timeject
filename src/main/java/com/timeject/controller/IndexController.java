@@ -16,7 +16,7 @@ public class IndexController {
 	public IndexController(ProjectService projectService){
 		this.projectService = projectService;
 	}
-	@GetMapping(value = "")
+	@GetMapping(value ={ "","/"})
 	public String home(Model model){
 		model.addAttribute("projects",projectService.findAll());
 		model.addAttribute("project",getEmptyProject());

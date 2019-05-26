@@ -2,17 +2,15 @@ package com.timeject.controller;
 
 import javax.inject.Inject;
 
+import com.timeject.util.RedirectAttributeKey;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import com.timeject.exception.NotFoundException;
 import com.timeject.model.Project;
 import com.timeject.service.ProjectService;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping(value = "/project")
@@ -37,10 +35,11 @@ public class ProjectController {
 	}
 
 	@GetMapping("/{id}/delete")
-	public String delete(@PathVariable Long id) throws NotFoundException {
-		Project project = projectService.findById(id);
-		projectService.deleteById(project);
-		return "project/view";
+	public String delete(@PathVariable Long id, RedirectAttributes redirectAttributes) throws NotFoundException {
+		String projectName = projectService.findById(id).getName();
+		projectService.deleteById(id);
+		redirectAttributes.addAttribute(RedirectAttributeKey.SUCCESS_MESSAGE.name(),"Project \""+projectName+"\" deleted!");
+		return "redirect:/";
 	}
 
 	@PostMapping("/")

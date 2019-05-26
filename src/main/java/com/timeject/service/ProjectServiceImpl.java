@@ -32,10 +32,9 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     @Transactional
-    public void deleteById(Project project) {
-    	Long projectTypeId = project.getType().getId();
-    	projectTypeRepository.deleteById(projectTypeId);
-        projectRepository.delete(project);
+    public void deleteById(Long id) {
+    	//projectTypeRepository.deleteById(projectTypeId);
+        projectRepository.deleteById(id);
     }
 
     @Inject

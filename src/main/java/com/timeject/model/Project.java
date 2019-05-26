@@ -24,11 +24,10 @@ public class Project {
     private String description;
     @OneToOne(mappedBy = "project",cascade=CascadeType.ALL)
     private ProjectStatus status;
-    @JoinColumn(name = "project_type_id", nullable = true)
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @MapsId
+    @JoinColumn(name = "project_type_id", nullable = false)
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
     private ProjectType type;
-    @OneToMany(cascade = CascadeType.REMOVE)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name= "project_id")
     private Collection<Task> task;
 

@@ -12,6 +12,7 @@
 <th:block th:replace="fragment/timeject-scripts"></th:block>
 </head>
 <body>
+    <div th:replace="fragment/component/message-bar"></div>
 	<header>
 		<div layout:fragment="nav-bar">
 			<th:block th:replace="fragment/component/nav-bar"></th:block>
@@ -35,9 +36,7 @@
 		</div>
 	</div>
 	<footer>
-		<p layout:fragment="footer"
-			th:text="${'timeject &copy;'+#dates.year(#dates.createNow())}">timeject
-			&copy;</p>
+	    <th:block th:replace="fragment/footer"></th:block>
 	</footer>
 </body>
 </html>

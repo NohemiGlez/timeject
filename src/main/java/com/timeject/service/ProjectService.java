@@ -11,5 +11,5 @@ public interface ProjectService {
     Optional<Project> findByName(String name);
     Iterable<Project> findAll();
     void save(Project project);
-	void deleteById(Project project);
+	void deleteById(Long id);
 }

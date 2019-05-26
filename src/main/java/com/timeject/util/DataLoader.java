@@ -8,6 +8,7 @@ import com.timeject.repository.ProjectRepository;
 import com.timeject.repository.TaskRepository;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
 import java.sql.Timestamp;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import static com.timeject.model.ProjectType.Type;
-//@Component
+@Component
 public class DataLoader implements ApplicationRunner {
 	private ProjectRepository projectRepository;
 	private TaskRepository taskRepository;

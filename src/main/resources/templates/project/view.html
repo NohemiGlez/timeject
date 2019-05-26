@@ -1,10 +1,14 @@
-<html layout:decorate="~{layout/project/layout.html}">
-  <div layout:fragment="project-content">
+<html layout:decorate="~{layout/project/layout}">
+    <div layout:fragment="project-content">
        <div th:each="task :${project.task}">
-            <div>
-                    <span th:text="${task.title}"></span>
-                    <span th:text="${task.description}"></span>
-            </div>
-        </div>
-  </div>
+               <div th:attr="id=${'project-task'+task.id}" class="card" style="width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title" th:text="${task.title}">Project Demo No. 9</h5>
+                    <p class="card-text" th:text="${task.description}">My project demo description no 9</p>
+                     <a href="#" class="btn btn-secondary">Edit</a>
+                      <a th:href="@{'/project/task/'+${task.id}}" class="btn btn-danger">Delete</a>
+                  </div>
+                </div>
+     </th:block>
+    </div>
 </html>
