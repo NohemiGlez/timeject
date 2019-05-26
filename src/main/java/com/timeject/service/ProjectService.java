@@ -1,9 +1,9 @@
 package com.timeject.service;
 
+import java.util.Optional;
+
 import com.timeject.exception.NotFoundException;
 import com.timeject.model.Project;
-
-import java.util.Optional;
 
 public interface ProjectService {
     void update(Project project) throws NotFoundException;
@@ -11,5 +11,6 @@ public interface ProjectService {
     Optional<Project> findByName(String name);
     Iterable<Project> findAll();
     void deleteById(Long id);
+    void save(Project project);
 
 }

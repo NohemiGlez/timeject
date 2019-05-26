@@ -1,14 +1,18 @@
 package com.timeject.controller;
 
-import com.timeject.exception.NotFoundException;
-import com.timeject.service.ProjectService;
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.inject.Inject;
+import com.timeject.exception.NotFoundException;
+import com.timeject.model.Project;
+import com.timeject.service.ProjectService;
 
 @Controller
 @RequestMapping(value = "/project/{id}")
@@ -38,5 +42,11 @@ public class ProjectController {
 
 	}
 
+	@PostMapping("/create")
+	public Project add( @ModelAttribute("project") Project project, Model model) {
+		projectService.save(project);
+		return project;
+	}
+	
 
 }

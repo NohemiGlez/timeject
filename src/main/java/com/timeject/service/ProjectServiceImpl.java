@@ -45,4 +45,9 @@ public class ProjectServiceImpl implements ProjectService {
             throw new NotFoundException("Entity not found to be updated");
         }
     }
+
+	@Override
+	public void save(Project project) {
+		projectRepository.save(project);
+	}
 }

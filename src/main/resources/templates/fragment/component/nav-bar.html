@@ -32,30 +32,31 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form>
+				<form method="POST" th:action="@{project/create}">
 					<div class="form-group">
-						<label for="project-name">Name</label> <input type="text"
-							class="form-control" id="project-name"
-							placeholder="My magic project">
+						<label for="project-name">Name</label> 
+						<input type="text"
+							class="form-control" id="project-name" name="project-name"
+							placeholder="My magic project"/>
 					</div>
 					<div class="form-group">
-						<label for="project-description">Description</label> <input
+						<label for="project-description">Description</label> 
+						<input
 							type="text" class="form-control" id="project-description"
-							placeholder="This project makes all your dreams true">
+							placeholder="This project makes all your dreams true" name="project-description"/>
 					</div>
 					<label for="project-type">Type</label>
-					<select
+					<select name="project-type"
 						class="custom-select" id="project-type-select">
 					</select> 
 					<label for="project-status">Status</label>
-					<select
+					<select name="project-status"
 						class="custom-select" id="project-status-select">
 					</select>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save
-							changes</button>
+						<input type="submit" class="btn btn-primary" value="Save project">
 					</div>
 				</form>
 			</div>
