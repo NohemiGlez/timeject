@@ -6,10 +6,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.timeject.model.Project;
-import com.timeject.model.ProjectType;
 
 @Repository
 public interface ProjectRepository extends CrudRepository<Project,Long>{
 	Optional<Project> findByName(String name);
 	Iterable<Project> findAllByOrderByIdDesc();
+	void save(Optional<Project> projectOptional);
 }

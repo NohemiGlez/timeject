@@ -5,9 +5,54 @@
        <h5 class="card-title" th:text="${project.name}"></h5>
        <p class="card-text" th:text="${project.description}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
        <a href="#" th:href="@{'/project/'+${project.id}+'/view'}" class="btn btn-info">View</a>
-        <a href="#" th:href="@{'/project/'+${project.id}+'/edit'}" class="btn btn-secondary">Edit</a>
+        <a href="#" th:href="@{'/project/'+${project.id}+'/edit'}" class="btn btn-secondary" data-toggle="modal" data-target="#edit-project">Edit</a>
          <a href="#" th:href="@{'/project/'+${project.id}+'/delete'}" class="btn btn-danger">Delete</a>
+            <div class="modal fade" id="edit-project" tabindex="-1" role="dialog" 
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5>Edit project
+				<h5 class="modal-title" id="exampleModalLabel" th:text="${project.name}"></h5></h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form method="PUT" th:action="@{/project/__${project.id}__/edit}" th:object="${project}">
+					<div class="form-group">
+						<label for="project-name">Name</label> 
+						<input type="text"
+							class="form-control" id="project-name"
+							th:value="${project.name}"  th:field="*{name}" th:errorclass="field-error"/>
+					</div>
+					<div class="form-group">
+						<label for="project-description">Description</label> 
+						<input
+							type="text" class="form-control" id="project-description"
+							placeholder="This project makes all your dreams true" th:field="*{description}"/>
+					</div>
+					<label for="project-type">Type</label>
+					<select name="project-type"
+						class="custom-select" id="project-type-select" th:field="*{type.type}">
+						<option value="No me lee el js aqui :c">No me lee el js aqui :c</option>
+					</select> 
+					<label for="project-status">Status</label>
+					<select name="project-status"
+						class="custom-select" id="project-status-select">
+						<option value="Choper">Choper</option>
+					</select>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Close</button>
+						<input type="submit" class="btn btn-primary" value="Save project">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
      </div>
    </div>
-</div>
 </th:block>

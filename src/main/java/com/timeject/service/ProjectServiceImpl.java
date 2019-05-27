@@ -17,9 +17,6 @@ import com.timeject.repository.ProjectTypeRepository;
 public class ProjectServiceImpl implements ProjectService {
     private ProjectRepository projectRepository;
     
-//    @Inject
-    private ProjectTypeRepository projectTypeRepository;
-
     @Override
     public Project findById(Long id) throws NotFoundException{
         return projectRepository.findById(id).orElseThrow(()->new NotFoundException("Project not found"));
@@ -33,7 +30,6 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     @Transactional
     public void deleteById(Long id) {
-    	//projectTypeRepository.deleteById(projectTypeId);
         projectRepository.deleteById(id);
     }
 
@@ -49,10 +45,12 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public void update(Project project) throws NotFoundException {
-        Optional<Project> projectOptional= projectRepository.findById(project.getId());
-        if(!projectOptional.isPresent()){
-            throw new NotFoundException("Entity not found to be updated");
-        }
+//        Optional<Project> projectOptional= projectRepository.findById(project.getId());
+//        if(!projectOptional.isPresent()){
+//            throw new NotFoundException("Entity not found to be updated");
+//        }
+    	System.out.println(project.getName() + project.getId() + project.getDescription());
+        projectRepository.save(project);
     }
 
 	@Override

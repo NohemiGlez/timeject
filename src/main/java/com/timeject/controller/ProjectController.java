@@ -29,9 +29,11 @@ public class ProjectController {
 		return "project/view";
 	}
 
-	@GetMapping("/{id}/edit")
-	public String edit(@PathVariable Long id){
-		return "project/edit";
+	@GetMapping("{id}/edit")
+	public String edit(@ModelAttribute("project") Project project, Model model, RedirectAttributes redirectAttributes) throws NotFoundException{
+		projectService.update(project);
+		redirectAttributes.addAttribute(RedirectAttributeKey.SUCCESS_MESSAGE.name(),"Project \""+ project.getName() +"\" updated!");
+		return "redirect:/";
 	}
 
 	@GetMapping("/{id}/delete")
